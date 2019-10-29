@@ -14,13 +14,19 @@ if(inp.value ===''){
             let text = document.createElement("span");
             text.append(inp.value)
            li.append(text);
+           
+       
           let closeButton = document.createElement('button')
             li.appendChild(closeButton);
             closeButton.classList = 'closer';
            closeButton.innerHTML = 'x';
+           localStorage['list'] = ul.innerHTML;
              inp.value = "";
+                //remove el
         closeButton.onclick = function(){
             closeButton.parentElement.remove();
+            localStorage['list'] = ul.innerHTML;
+           
             }
         } 
 }
@@ -31,8 +37,13 @@ if(inp.value ===''){
        let that = event.target;
     event.target.classList.toggle('checked');
     that.firstChild.classList.toggle("line");
+    localStorage['list'] = ul.innerHTML;
       } 
 }, false);
+
+if(localStorage['list']){
+  ul.innerHTML = localStorage['list'];
+}
 
 
 
